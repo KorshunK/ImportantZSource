@@ -1,0 +1,14 @@
+cooldown: 3600
+items:
+  slot_0:
+    slot: 0
+    material: NETHERITE_SWORD
+    amount: 1
+    enchantments:
+      - SHARPNESS:1
+  slot_24:
+    slot: 24
+    material: NETHERITE_SWORD
+    amount: 4
+    enchantments:
+      - SHARPNESS:1

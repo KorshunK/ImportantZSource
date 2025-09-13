@@ -1,0 +1,92 @@
+dont_have_permission: "&cУ вас недостаточно прав!"
+module-is-disabled: "&cЭтот модуль выключен!"
+player-not-found: "&cИгрок не найден!"
+enter_command_right: "&cВведите команду правильно!"
+command-not-console: "&cТолько игроки могут выполнять эту команду!"
+color-change-forbidden: "&cЗапрещенный символ: &"
+fly:
+  fly-enabled: "&aРежим полёта включен!"
+  fly-disabled: "&aРежим полёта выключен!"
+kit:
+  kit-not-exists: "&cКита с именем &f{kit_name} не существует!"
+  kit-already-exists: "&cКит с именем &f{kit_name} уже существует!"
+  kit-success-created: "&aКит с именем &f{kit_name} успешно создан!"
+  kit-success-gave: "&aВы выдали игроку &c{player_name} кит &f{kit_name}"
+  kit-deleted: "&cКит с именем &f{kit_name} успешно удалён!"
+  kit-claimed: "&aВы успешно получили кит &f{kit_name}"
+  kit-cooldown: "&cВы сможете забрать кит через: {cooldown_remained}" # {cooldown} for show cooldown time
+tpa:
+  tpa-accepted: "&aВы приняли запрос на телепортацию!"
+  tpa-cancelled: "&cВы отменили запрос на телепортацию!"
+  player-tpa-cancelled: "&cИгрок {sender_name} отменил запрос на телепортацию"
+  you-sent-tpa: "&aВы отправили запрос на телепортацию игроку {target_name}"
+  you-have-tpa: "&aИгрок {player_name} отправил вам запрос на телепортацию"
+  you-dont-have-tpa-requests: "&cУ вас нет запросов на телепортацию!"
+  you-already-sent-tpa-request: "&cВы уже отправили запрос на телепортацию игроку {target_name}"
+  you-not-sent-tpa-requests: "&cВы не отправляли запросов на телепортацию"
+  tpa-deny: "&cВы отклонили запрос на телепортацию"
+  player-tpa-deny: "&cИгрок {target_name} отклонил запрос на телепортацию"
+  tpa-player-is-target: "&cВы не можете отправлять запросы самому себе!"
+sudo:
+  sudo-success: "&aВы принудили игрока {player_name} выполнить команду {command_name}"
+message:
+  message-format: "&7[&a{sender_name} &7-> &a{target_name}&7] >> &f{message}"
+  message-player-is-target: "&cВы не можете отправлять сообщения самому себе!"
+  you_dont_have_messages: "&cУ вас нет входящих сообщений!"
+invsee:
+  invsee-sender-is-target: "&cВы итак можете посмотреть свой инвентарь!"
+vanish:
+  vanish-enabled: "&aТеперь вы скрыты от всех игроков"
+  vanish-disabled: "&aТеперь вы видимы всем игрокам"
+  vanish-player-enabled: "&aВы скрыли игрока {player_name}"
+  vanish-player-disabled: "&aВы показали игрока {player_name}"
+home:
+  home-limit: "&cДостигнут лимит количества домов. Ваш лимит: {homes_limit}"
+  home-already-exists: "&cТочка {home_name} уже существует!"
+  success-set-home: "&aТочка {home_name} успешно установлена!"
+  home-not-found: "&cТочка {home_name} не найдена!"
+  success-teleport-home: "&aВы телепортировались к точке дома {home_name}"
+  home-deleted: "&cТочка дома {home_name} была удалена!"
+  user-hasnt-homes: "&cУ игрока {player_name} нет точек домов!"
+  homes-player: "&aДома игрока &f{player_name}&7:"
+  homes:
+    - "&f  {index}. &a{home_name}&7:"
+    - "&a    X: &7{x_pos}"
+    - "&a    Y: &7{y_pos}"
+    - "&a    Z: &7{z_pos}"
+warp:
+  warp-not-found: "&cВарп {warp_name} не найден!"
+  success-teleport-warp: "&aВы успешно телепортировались на варп {warp_name}"
+  warp-already-exists: "&cВарп {warp_name} уже существует!"
+  success-set-warp: "&aВы успешно установили варп {warp_name}"
+  warp-deleted: "&cВарп {warp_name} успешно удалён!"
+  warps-not-exists: "&cНа этом сервере нет варпов!"
+  warps:
+    - "&f{index}. &a{warp_name}&7:"
+    - "&a  X: &7{x_pos}"
+    - "&a  Y: &7{y_pos}"
+    - "&a  Z: &7{z_pos}"
+spawn:
+  spawn-not-found: "&cСпавн не установлен на этом сервере!"
+  success-teleported: "&aВы успешно телепортировались на спавн!"
+  you-teleported-player: "&aВы успешно телепортировали игрока {player_name} на спавн!"
+  spawn-already-set: "&cСпавн уже установлен. Чтобы изменить точку спавна, пропишите команду еще раз!"
+  spawn-set: "&aВы успешно установили точку спавна!"
+back:
+  you-dont-have-back-location: "&cУ вас нет предыдущей локации!"
+  success-teleport: "&aВы телепортировались на предыдущую локацию!"
+death:
+  you-dont-have-death-location: "&cВы еще не умирали!"
+  success-teleport: "&aВы успешно телепортировались на место своей смерти!"
+seen:
+  player-online: "&aИгрок {player_name} &aонлайн, зашел на сервер {last_login_time} назад"
+  player-offline: "&aИгрок {player_name} &cоффлайн, последний раз был на сервере {last_logoff_time} назад"
+  seen:
+    - "&a  UUID: &f{player_uuid}"
+    - "&a  IP-Адрес: &f{ip_address}"
+tp:
+  sender-is-target: "&cВы не можете телепортироваться к себе!"
+  sender-is-target-player: "&cВы телепортируйте одного и того же игрока!"
+  tp-success: "&aВы успешно телепортировались к игроку &f{target_name}"
+  tp-success-player: "&aВы телепортировали игрока &f{player_name} к игроку &f{target_name}!"
+  tphere-success: "&aВы успешно телепортировали игрока &f{target_name} &aк себе!"

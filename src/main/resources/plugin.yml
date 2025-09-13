@@ -1,0 +1,56 @@
+name: ImportantZ
+version: '${project.version}'
+main: ru.korshun.importantz.ImportantZ
+api-version: 1.13
+commands:
+  fly: {}
+  # Kit
+  kit: {}
+  createkit:
+    aliases:
+      - kitcreate
+  deletekit:
+    aliases:
+      - kitdelete
+  # TP
+  tpa: {}
+  tpaccept: {}
+  tpadeny: {}
+  tpacancel: {}
+  invsee: {}
+  sudo: {}
+  message:
+    aliases:
+      - msg
+      - m
+  reply:
+    aliases:
+      - r
+  vanish:
+    aliases:
+      - v
+  sethome: {}
+  home: {}
+  delhome:
+    aliases:
+      - deletehome
+  homes: {}
+  warp: {}
+  setwarp: {}
+  delwarp:
+    aliases:
+      - deletewarp
+  warps: {}
+  setspawn: {}
+  spawn: {}
+  back: {}
+  death:
+    aliases:
+      - deathlocation
+  seen: {}
+  tp: {}
+  tphere:
+    aliases:
+      - s
+  tppos: {}
+  test: {}
