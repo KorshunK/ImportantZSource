@@ -1,0 +1,45 @@
+language: ru
+prefix: "&7[&a&lImportantZ&7] >> &f"
+database:
+  type: sqlite
+  host: "127.0.0.1"
+  port: 3306
+  username: "root"
+  password: "123qwe"
+  dbName: "importantz"
+time:
+  seconds: 'secs'
+  minutes: 'minutes'
+  hours: 'hours'
+  days: 'days'
+  months: 'months'
+  years: 'years'
+  now: 'now'
+commands:
+  fly:
+    prefix: "&7[&aFly&7] >> &f"
+  tpa:
+    prefix: "&7[&aTPA&7] >> &f"
+    requestExpiredTime: 30 # in seconds
+  sudo:
+    prefix: "&7[&aSudo&7] >> &f"
+  invsee:
+    prefix: "&7[&aInvsee&7] >> &f"
+  message:
+    prefix: "&7[&aMessages&7] >> &f"
+  vanish:
+    prefix: "&7[&aVanish&7] >> &f"
+  home:
+    prefix: "&7[&aHome&7] >> &f"
+  warp:
+    prefix: "&7[&aWarps&7] >> &f"
+  spawn:
+    prefix: "&7[&aSpawn&7] >> &f"
+  back:
+    prefix: "&7[&aBack&7] >> &f"
+  seen:
+    prefix: "&7[&aSeen&7] >> &f"
+  tp:
+    prefix: "&7[&aTP&7] >> &f"
+  kit:
+    prefix: "&7[&aKit&7] >> &f"

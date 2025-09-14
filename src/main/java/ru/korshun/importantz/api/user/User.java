@@ -1,0 +1,76 @@
+package ru.korshun.importantz.api.user;
+
+import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.PlayerInventory;
+import ru.korshun.importantz.api.home.Home;
+import ru.korshun.importantz.api.home.callback.SetHomeCallback;
+import ru.korshun.importantz.api.message.PrivateMessage;
+import ru.korshun.importantz.utils.config.Prefix;
+
+import java.net.InetSocketAddress;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
+public interface User extends OfflineUser {
+    String getName();
+    UUID getUUID();
+    boolean hasPermission(String permission);
+    void sendMessage(String path, boolean translated);
+    void sendMessage(String path);
+    void sendMessage(String command, String path, boolean translated, boolean isPrefix);
+    void sendMessage(String command, String path, boolean translated, boolean isPrefix, HashMap<String, String> replaces);
+    void sendMessage(String path, boolean translated, boolean isPrefix);
+    void sendMessage(String path, boolean translated, boolean prefix, HashMap<String, String> replaces);
+    void teleport(User user);
+    void teleport(Location location);
+    Location getLocation();
+    boolean flySwitch();
+    boolean isFlying();
+    List<TeleportRequest> getTeleportRequests();
+    List<TeleportRequest> getSentTeleportRequests();
+    TeleportRequest sendTeleportRequest(User sender);
+    TeleportRequest getLastTeleportRequest();
+    TeleportRequest getLastSentTeleportRequest();
+    boolean isSentTeleportRequestTo(User user);
+    boolean hasTeleportRequests();
+    PlayerInventory getInventory();
+    void openInventory(Inventory inventory);
+    void updateInventory();
+    List<PrivateMessage> getPrivateMessages();
+    PrivateMessage sendPrivateMessage(User sender, String content);
+    PrivateMessage getLastPrivateMessage();
+    boolean hasPrivateMessages();
+    void hideUser();
+    void hideUser(Player player);
+    void showUser();
+    void showUser(Player player);
+    boolean switchVanish();
+    boolean isVanished();
+    List<Home> getHomes();
+    int getHomesCount();
+    boolean isHomeExists(String name);
+    SetHomeCallback setHome(String name, Location location);
+    void setHomeLimit(int limit);
+    int getHomeLimit();
+    Home getHome(String name);
+    void deleteHome(Home home);
+    void reloadHomes();
+    boolean hasHomes();
+    void setOp(boolean b);
+    boolean isOp();
+    void setLastLocation(Location location);
+    Location getLastLocation();
+    void teleportToLastLocation();
+    void setDeathLocation(Location location);
+    Location getDeathLocation();
+    boolean isPlayedBefore();
+    void teleportToDeathLocation();
+    InetSocketAddress getIPAddress();
+    boolean isOnline();
+
+    OfflinePlayer getPlayer();
+}
