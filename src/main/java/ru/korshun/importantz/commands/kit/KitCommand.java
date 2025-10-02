@@ -24,11 +24,15 @@ public class KitCommand extends CommandHandler {
         User user = ImportantZ.getUser(sender);
         KitManager kitManager = ImportantZ.getKitManager();
         KitCooldownManager kitCooldownManager = ImportantZ.getKitCooldownManager();
-        if(!user.hasPermission(commandPermission + "." + args[0])) {
+        if(!user.hasPermission(commandPermission)) {
             this.sendDontHavePermission(sender);
             return;
         }
         if(kitManager.kitExists(args[0])) {
+            if(!user.hasPermission(commandPermission + "." + args[0]) || !user.hasPermission(commandPermission + ".*")) {
+                this.sendDontHavePermission(sender);
+                return;
+            }
             long remaining = kitCooldownManager.getSecondsUntilAvailable(args[0], user.getUUID(), kitManager.getKit(args[0]).getCooldown());
             if(remaining > 0) {
                 if(!user.hasPermission(commandPermission + "." + args[0] + ".cooldown.bypass")) {
@@ -47,6 +51,20 @@ public class KitCommand extends CommandHandler {
             user.sendMessage("kit", "kit-not-exists", true, true, new HashMap<String, String>() {{
                 put("{kit_name}", args[0]);
             }});
+        }
+    }
+
+    @HandleCommand(permission = "", argCount = 2, isConsole = true)
+    @IgnoreReturnType
+    public void twoArgs(CommandSender sender, Command command, String label, String[] args) {
+        KitManager kitManager = ImportantZ.getKitManager();
+        if(kitManager.kitExists(args[0])) {
+            User target = ImportantZ.getUser(args[1]);
+            if(target == null) {
+                this.sendPlayerNotFound(sender);
+                return;
+            }
+            kitManager.giveKit(args[0], target);
         }
     }
 
