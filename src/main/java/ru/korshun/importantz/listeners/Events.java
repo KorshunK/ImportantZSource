@@ -1,5 +1,6 @@
 package ru.korshun.importantz.listeners;
 
+import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -33,6 +34,14 @@ public class Events implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         User user = ImportantZ.getUser(e.getPlayer());
         long logoffTime = System.currentTimeMillis();
+
+        StringBuilder locationBuilder = new StringBuilder();
+        Location location = user.getLocation();
+        locationBuilder.append(location.getWorld().getName()).append(";").append(location.getX()).append(";").append(location.getY()).append(";").append(location.getZ()).append(";").append(location.getYaw()).append(location.getPitch());
+
+        ImportantZ.getUserDataFile(user).set("lastQuitLocation", locationBuilder.toString());
+        ImportantZ.saveUserData(user);
+
         UserDBManager.INSTANCE.setLastLogoffTime(user, logoffTime);
         ImportantZ.getOnlineUsers().remove(user);
     }
@@ -60,6 +69,12 @@ public class Events implements Listener {
         }
         ImportantZ.createUserData(user);
         ImportantZ.getUserDataFile(user).set("ipAddress", user.getIPAddress().toString().split(":")[0].replace("/", ""));
+
+        StringBuilder locationBuilder = new StringBuilder();
+        Location location = user.getLocation();
+        locationBuilder.append(location.getWorld().getName()).append(";").append(String.format("%.2f", location.getX())).append(";").append(String.format("%.2f", location.getY())).append(";").append(String.format("%.2f", location.getZ())).append(";").append(String.format("%.2f", location.getYaw())).append(String.format("%.2f", location.getPitch()));
+
+        ImportantZ.getUserDataFile(user).set("lastQuitLocation", locationBuilder.toString());
         ImportantZ.saveUserData(user);
         ImportantZ.loadUserData(user);
         user.reloadHomes();
