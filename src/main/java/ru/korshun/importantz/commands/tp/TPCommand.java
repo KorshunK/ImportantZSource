@@ -8,6 +8,7 @@ import ru.korshun.importantz.api.command.HandleCommand;
 import ru.korshun.importantz.api.command.IgnoreReturnType;
 import ru.korshun.importantz.api.module.Module;
 import ru.korshun.importantz.api.user.User;
+import ru.korshun.importantz.utils.ChatUtil;
 
 import java.util.HashMap;
 
@@ -33,7 +34,7 @@ public class TPCommand extends CommandHandler {
         }});
     }
 
-    @HandleCommand(permission = "", argCount = 2)
+    @HandleCommand(permission = "", argCount = 2, isConsole = true)
     @IgnoreReturnType
     public void twoArgs(CommandSender sender, Command command, String label, String[] args) {
         User user = ImportantZ.getUser(args[0]);
@@ -42,12 +43,12 @@ public class TPCommand extends CommandHandler {
             this.sendPlayerNotFound(sender);
             return;
         }
-        if(user == target) {
-            user.sendMessage("tp", "sender-is-target-player", true, true);
+        if(sender.getName().equalsIgnoreCase(target.getName())) {
+            ChatUtil.sendMessage(sender, "tp.sender-is-target-player", true, true);
             return;
         }
         user.teleport(target);
-        user.sendMessage("tp", "tp-success-player", true, true, new HashMap<String, String>() {{
+        ChatUtil.sendMessage(sender, "tp.tp-success-player", true, true, new HashMap<String, String>() {{
             put("{player_name}", user.getName());
             put("{target_name}", target.getName());
         }});
