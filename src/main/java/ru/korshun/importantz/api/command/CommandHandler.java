@@ -1,5 +1,6 @@
 package ru.korshun.importantz.api.command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import ru.korshun.importantz.ImportantZ;
@@ -18,6 +19,22 @@ public abstract class CommandHandler implements TabExecutor {
 
     protected String permission;
     protected String commandPermission;
+
+    private Method tabCompleterMethod;
+
+    public CommandHandler() {
+        initTabCompleter();
+    }
+
+    private void initTabCompleter() {
+        for(Method method : this.getClass().getDeclaredMethods()) {
+            if(method.isAnnotationPresent(TabCompleterMethod.class)) {
+                method.setAccessible(true);
+                this.tabCompleterMethod = method;
+                break;
+            }
+        }
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -62,6 +79,7 @@ public abstract class CommandHandler implements TabExecutor {
                                 fullPermission = "importantz.command." + command.getName() + "." + permAnnotation.permission();
                             }
                         }
+                        break;
                     }
                 }
             }
@@ -111,19 +129,15 @@ public abstract class CommandHandler implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        for(Method method : this.getClass().getDeclaredMethods()) {
-            if(method.isAnnotationPresent(TabCompleterMethod.class)) {
-                method.setAccessible(true);
-                try {
-                    return (List<String>) method.invoke(this, sender, command, label, args);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                } catch (InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
+        if(tabCompleterMethod != null) {
+            try {
+                return (List<String>) tabCompleterMethod.invoke(this, sender, command, label, args);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
             }
+        } else {
+            return null;
         }
-        return null;
     }
 
     protected void sendDontHavePermission(CommandSender sender) {

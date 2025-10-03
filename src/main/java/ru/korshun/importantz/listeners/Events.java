@@ -3,13 +3,11 @@ package ru.korshun.importantz.listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import ru.korshun.importantz.ImportantZ;
 import ru.korshun.importantz.api.database.parent.UserDBManager;
-import ru.korshun.importantz.api.database.parent.UserDBManagerNew;
 import ru.korshun.importantz.api.user.OfflineUser;
 import ru.korshun.importantz.api.user.User;
 import ru.korshun.importantz.utils.UserUtils;
@@ -53,7 +51,7 @@ public class Events implements Listener {
 
     private void loadUserData(User user) {
         user.setHomeLimit(UserUtils.getHomeLimit(user));
-        if(!user.isPlayedBefore()) {
+        if(!user.hasPlayedBefore()) {
             UserDBManager.INSTANCE.setup(user);
         }
         OfflineUser offlineUser = ImportantZ.createOfflineUser(user);

@@ -371,7 +371,7 @@ public final class ImportantZ extends JavaPlugin {
         return kitsConfig;
     }
 
-    public static YamlConfiguration getKitsDataFile() {
+    public YamlConfiguration getKitsDataFile() {
         return kitsDataFile;
     }
 

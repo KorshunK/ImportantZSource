@@ -472,7 +472,7 @@ public class IUser implements User {
     }
 
     @Override
-    public boolean isPlayedBefore() {
+    public boolean hasPlayedBefore() {
         return this.getPlayer().hasPlayedBefore();
     }
 

@@ -4,11 +4,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import ru.korshun.importantz.ImportantZ;
 import ru.korshun.importantz.api.command.*;
+import ru.korshun.importantz.api.kit.Kit;
 import ru.korshun.importantz.api.kit.KitManager;
 import ru.korshun.importantz.api.kit.cooldown.KitCooldownManager;
 import ru.korshun.importantz.api.module.Module;
 import ru.korshun.importantz.api.user.User;
 import ru.korshun.importantz.kit.cooldown.IKitCooldownManager;
+import ru.korshun.importantz.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,11 +35,13 @@ public class KitCommand extends CommandHandler {
                 this.sendDontHavePermission(sender);
                 return;
             }
-            long remaining = kitCooldownManager.getSecondsUntilAvailable(args[0], user.getUUID(), kitManager.getKit(args[0]).getCooldown());
+            Kit kit = kitManager.getKit(args[0]);
+            long remaining = kitCooldownManager.getSecondsUntilAvailable(args[0], user.getUUID(), kit.getCooldown());
             if(remaining > 0) {
                 if(!user.hasPermission(commandPermission + "." + args[0] + ".cooldown.bypass")) {
                     user.sendMessage("kit", "kit-cooldown", true, false, new HashMap<String, String>() {{
-                        put("{cooldown_remained}", String.valueOf((int) remaining));
+                        put("{cooldown_remained}", TimeUtils.parseTimeFromSeconds(remaining));
+                        put("{cooldown}", TimeUtils.parseTimeFromSeconds(kit.getCooldown()));
                     }});
                     return;
                 }

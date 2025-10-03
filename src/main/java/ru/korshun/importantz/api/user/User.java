@@ -8,7 +8,6 @@ import org.bukkit.inventory.PlayerInventory;
 import ru.korshun.importantz.api.home.Home;
 import ru.korshun.importantz.api.home.callback.SetHomeCallback;
 import ru.korshun.importantz.api.message.PrivateMessage;
-import ru.korshun.importantz.utils.config.Prefix;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
@@ -67,7 +66,7 @@ public interface User extends OfflineUser {
     void teleportToLastLocation();
     void setDeathLocation(Location location);
     Location getDeathLocation();
-    boolean isPlayedBefore();
+    boolean hasPlayedBefore();
     void teleportToDeathLocation();
     InetSocketAddress getIPAddress();
     boolean isOnline();

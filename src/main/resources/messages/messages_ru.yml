@@ -15,6 +15,20 @@ kit:
   kit-deleted: "&cКит с именем &f{kit_name} успешно удалён!"
   kit-claimed: "&aВы успешно получили кит &f{kit_name}"
   kit-cooldown: "&cВы сможете забрать кит через: {cooldown_remained}" # {cooldown} for show cooldown time
+time:
+  second: 'секунда'
+  seconds: 'секунд'
+  minute: 'минута'
+  minutes: 'минут'
+  hour: 'час'
+  hours: 'часов'
+  day: 'день'
+  days: 'дней'
+  month: 'месяц'
+  months: 'месяцев'
+  year: 'год'
+  years: 'лет'
+  now: 'сейчас'
 tpa:
   tpa-accepted: "&aВы приняли запрос на телепортацию!"
   tpa-cancelled: "&cВы отменили запрос на телепортацию!"

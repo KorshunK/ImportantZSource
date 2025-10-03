@@ -19,13 +19,16 @@ public class IKitCooldownManager implements KitCooldownManager {
     public IKitCooldownManager(ImportantZ plugin) {
         this.plugin = plugin;
         this.dataFile = new File(plugin.getDataFolder().getAbsolutePath() + "/kits_data.yml");
-        this.dataConfig = ImportantZ.getKitsDataFile();
+        this.dataConfig = plugin.getKitsDataFile();
     }
 
     @Override
     public void load() {
         lastClaims.clear();
-        if(dataConfig == null) plugin.loadKitsDataFile();
+        if(dataConfig == null) {
+            plugin.loadKitsDataFile();
+            dataConfig = plugin.getKitsDataFile();
+        }
         for(String key : dataConfig.getKeys(false)) {
             long when = dataConfig.getLong(key, 0L);
             lastClaims.put(key, when);

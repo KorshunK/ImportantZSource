@@ -49,20 +49,38 @@ public class ConfigUtils {
     }
 
     public static class Time {
+        public static String getSecond() {
+            return getString("time.second");
+        }
         public static String getSeconds() {
             return getString("time.seconds");
+        }
+        public static String getMinute() {
+            return getString("time.minute");
         }
         public static String getMinutes() {
             return getString("time.minutes");
         }
+        public static String getHour() {
+            return getString("time.hour");
+        }
         public static String getHours() {
             return getString("time.hours");
+        }
+        public static String getDay() {
+            return getString("time.day");
         }
         public static String getDays() {
             return getString("time.days");
         }
+        public static String getMonth() {
+            return getString("time.month");
+        }
         public static String getMonths() {
             return getString("time.months");
+        }
+        public static String getYear() {
+            return getString("time.year");
         }
         public static String getYears() {
             return getString("time.years");
