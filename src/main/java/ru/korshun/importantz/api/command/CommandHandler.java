@@ -1,6 +1,7 @@
 package ru.korshun.importantz.api.command;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import ru.korshun.importantz.ImportantZ;
@@ -65,6 +66,8 @@ public abstract class CommandHandler implements TabExecutor {
                         } else {
                             fullPermission = "importantz.command." + command.getName() + "." + permAnnotation.permission();
                         }
+                    } else {
+                        ImportantZ.getInstance().getLogger().severe("Неверное объявление метода! Требуемый модификатор доступа: " + ChatColor.YELLOW + "public" + ChatColor.RED + ", требуемый возвращаемый тип: " + ChatColor.YELLOW + "boolean" + ChatColor.RED + ".");
                     }
                     break;
                 } else if(method.isAnnotationPresent(IgnoreArgCount.class)) {
@@ -78,11 +81,17 @@ public abstract class CommandHandler implements TabExecutor {
                             } else {
                                 fullPermission = "importantz.command." + command.getName() + "." + permAnnotation.permission();
                             }
+                        } else {
+                            ImportantZ.getInstance().getLogger().severe("Неверное объявление метода! Требуемый модификатор доступа: " + ChatColor.YELLOW + "public" + ChatColor.RED + ", требуемый возвращаемый тип: " + ChatColor.YELLOW + "boolean" + ChatColor.RED + ".");
                         }
                         break;
                     }
                 }
             }
+        }
+
+        if(fullPermission == null) {
+            return false;
         }
 
         if (methodToExecute == null) {

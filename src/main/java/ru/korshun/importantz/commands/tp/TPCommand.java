@@ -43,7 +43,7 @@ public class TPCommand extends CommandHandler {
             this.sendPlayerNotFound(sender);
             return;
         }
-        if(sender.getName().equalsIgnoreCase(target.getName())) {
+        if(user == target) {
             ChatUtil.sendMessage(sender, "tp.sender-is-target-player", true, true);
             return;
         }
